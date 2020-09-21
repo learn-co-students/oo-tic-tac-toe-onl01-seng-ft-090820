@@ -17,21 +17,21 @@ class TicTacToe
     [6,4,2]
 ]
 
-def display_board
-  puts " #{@board[0]} | #{@board[1]} | #{@board[2]} "
-  puts "----------------------------------------- "
-  puts " #{@board[3]} | #{@board[4]} | #{@board[5]} "
-  puts " ----------------------------------------- "
-  puts " #{@board[6]} | #{@board[7]} | #{@board[8]} "
-end
+  def display_board
+    puts " #{@board[0]} | #{@board[1]} | #{@board[2]} "
+    puts "----------------------------------------- "
+    puts " #{@board[3]} | #{@board[4]} | #{@board[5]} "
+    puts " ----------------------------------------- "
+    puts " #{@board[6]} | #{@board[7]} | #{@board[8]} "
+  end
 
-def input_to_index(string)
-  string.to_i - 1
-end
+  def input_to_index(string)
+    string.to_i - 1
+  end
 
-def move(position, player)
-  @board[position] = player
-end
+  def move(position, player)
+    @board[position] = player
+  end
 
  def position_taken?(index)
    ((@board[index] == "X") || (@board[index] == "O"))
@@ -43,7 +43,6 @@ end
 
   def turn_count
     @board.count{|token| token == "X" || token == "O"}
-    binding.pry
   end
 
   def current_player
@@ -82,50 +81,50 @@ end
     return false
   end
 
-def full?
-  @board.all?{|i| i == "X" || i == "O" }
-end
-
-def draw?
-  if !won? && full?
-     return true
-   else
-     false
-   end
-end
-
-def over?
-  if draw? || won?
-    true
-  else
-    false
+  def full?
+    @board.all?{|i| i == "X" || i == "O" }
   end
-end
 
-def winner
-  index = []
-  index = won?
-  if index == false
-    return nil
-  else
-    if @board[index[0]] == "X"
-      return "X"
+  def draw?
+    if !won? && full?
+       return true
+     else
+       false
+     end
+  end
+
+  def over?
+    if draw? || won?
+      true
     else
-      return "O"
+      false
     end
   end
-end
 
-def play
-  until over? == true
-    turn
+  def winner
+    index = []
+    index = won?
+    if index == false
+      return nil
+    else
+      if @board[index[0]] == "X"
+        return "X"
+      else
+        return "O"
+      end
+    end
   end
 
-  if won?
-    puts "Congratulations #{winner}!"
-  elsif draw?
-    puts "Cat's Game!"
+  def play
+    until over? == true
+      turn
+    end
+
+    if won?
+      puts "Congratulations #{winner}!"
+    elsif draw?
+      puts "Cat's Game!"
+    end
   end
-end
 
 end
