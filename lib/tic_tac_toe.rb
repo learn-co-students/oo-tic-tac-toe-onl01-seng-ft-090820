@@ -19,9 +19,9 @@ class TicTacToe
 
   def display_board
     puts " #{@board[0]} | #{@board[1]} | #{@board[2]} "
-    puts "----------------------------------------- "
+    puts "------------"
     puts " #{@board[3]} | #{@board[4]} | #{@board[5]} "
-    puts " ----------------------------------------- "
+    puts " -----------"
     puts " #{@board[6]} | #{@board[7]} | #{@board[8]} "
   end
 
@@ -29,12 +29,12 @@ class TicTacToe
     string.to_i - 1
   end
 
-  def move(position, player)
+  def move(position, player = "X")
     @board[position] = player
   end
 
  def position_taken?(index)
-   ((@board[index] == "X") || (@board[index] == "O"))
+   @board[index] == "X" || @board[index] == "O"
   end
 
   def valid_move?(index)
@@ -51,7 +51,7 @@ class TicTacToe
 
   def turn
     puts "Pick a position 1-9"
-    input = gets.chomp
+    input = gets.strip
     index = input_to_index(input)
     player = current_player
     if valid_move?(index)
