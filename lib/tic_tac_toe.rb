@@ -110,15 +110,6 @@ end
     end
   end
 
-  def play
-    until over?
-      turn
-    end
-
-    if won? 
-      puts "Congratulations #{winner}!"
-    elsif draw?
-      print "Cats Game!"
-    end
+  
   end
 end  
